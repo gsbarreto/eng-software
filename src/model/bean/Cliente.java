@@ -16,7 +16,10 @@ public class Cliente {
     private String email;
     private String senha;
     
-    public Cliente(){        
+    public Cliente(){     
+        this.email = "";
+        this.nome = "";
+        this.senha = "";
     }
     
     public Cliente(String nome, String email, String senha){        

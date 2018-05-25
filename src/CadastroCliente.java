@@ -162,7 +162,7 @@ public class CadastroCliente extends javax.swing.JFrame {
             c.setEmail(txtEmail.getText());
             c.setSenha(txtSenha.getText());         
            
-            cli.add(c);
+            cli.save(c);
             JOptionPane.showMessageDialog(criadocomsucesso, "Usuario cadastrado com sucesso.");
             limpaCampos();
         }else{
@@ -182,6 +182,7 @@ public class CadastroCliente extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnCadastrar;
     private javax.swing.JLabel jLabel1;

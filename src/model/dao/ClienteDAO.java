@@ -6,11 +6,12 @@
 package model.dao;
 
 import connetion.ConnectionFactory;
+import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.*;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import model.bean.Cliente;
 
 /**
@@ -24,7 +25,7 @@ public class ClienteDAO {
         con = ConnectionFactory.getConnection();
     }
     
-    public boolean add(Cliente cliente){
+    public boolean save(Cliente cliente){
         
         String sql = "insert into usuario (nome, email, senha) values (?,?,?)";
         
@@ -44,77 +45,64 @@ public class ClienteDAO {
         }
     }
     
-    public boolean update(Cliente cliente){
-        
-        String sql = "update usuario set nome=?,senha=? where email=?";
-        
-        PreparedStatement stmt = null;
-        try {
-            stmt = con.prepareStatement(sql);
-            stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getSenha());
-            stmt.setString(3, cliente.getEmail());
-            stmt.executeUpdate();
-            return true;
-        } catch (SQLException ex) {
-            System.err.print("Erro: "+ex);
-            return false;            
-        }finally{
-            ConnectionFactory.closeConnection(con, stmt);
-        }
-    }
     
-    public boolean delete(Cliente cliente){
-        
-        String sql = "delete from usuario where email=?";
+    
+    public Cliente getCliente(String email, String senha){
+        String sql = "select * from usuario where email LIKE ? and senha LIKE ?";
         
         PreparedStatement stmt = null;
-        try {
+        try{
+            System.out.println(email);
+            
+            if(email == null || senha == null || email.trim().equals("") || senha.trim().equals("")){
+                return null;
+            }
+            
             stmt = con.prepareStatement(sql);
-            stmt.setString(1, cliente.getEmail());
-            stmt.executeUpdate();
-            return true;
-        } catch (SQLException ex) {
-            System.err.print("Erro: "+ex);
-            return false;            
+            stmt.setString(1, "%"+email+"%");
+            stmt.setString(2, "%"+senha+"%");
+            ResultSet rs = stmt.executeQuery();
+            
+            if(rs.next()){
+                Cliente cli = new Cliente(rs.getString("nome"),rs.getString("email"),rs.getString("senha"));
+            
+                return cli;
+            }else{
+                return null;
+            }        
+
+        }catch(SQLException ex){
+            return null;
         }finally{
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
     
     public List<Cliente> getClientes(){
-        List<Cliente> lista = new ArrayList<Cliente>();
-        ResultSet rs = null;
         String sql = "select * from usuario";
-        
+        ArrayList<Cliente> lista = new ArrayList<Cliente>();
         PreparedStatement stmt = null;
-        try {
+        try{
             stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery();
+            
             
             while(rs.next()){
-                Cliente cliente = new Cliente();
-                cliente.setIdCli(Integer.valueOf(rs.getString("idUser")));
-                cliente.setEmail(rs.getString("email"));
-                cliente.setEmail(rs.getString("senha"));
-                cliente.setEmail(rs.getString("nome"));
-                lista.add(cliente);
+                Cliente cli = new Cliente(rs.getString("nome"),rs.getString("email"),rs.getString("senha"));
+                lista.add(cli);
             }
+
+            return lista;           
             
-            rs.close();
-            stmt.close();
             
-            return lista;
-            
-        } catch (SQLException ex) {
-            System.err.print("Erro: "+ex);
-            //Falta adicionar exception
+        }catch(SQLException ex){
+            System.out.println("Erro: ");
             return null;
         }finally{
             ConnectionFactory.closeConnection(con, stmt);
         }
-    } 
+    }
     
     
-    
+     
 }

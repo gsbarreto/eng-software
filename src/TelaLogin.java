@@ -1,3 +1,9 @@
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import model.bean.Cliente;
+import model.dao.ClienteDAO;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,7 +15,7 @@
  * @author gabriel
  */
 public class TelaLogin extends javax.swing.JFrame {
-
+    Cliente cli = null;
     /**
      * Creates new form TelaLogin
      */
@@ -32,7 +38,7 @@ public class TelaLogin extends javax.swing.JFrame {
         LabelEmail = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         LabelSenha = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtSenha = new javax.swing.JPasswordField();
         buttonLogin = new javax.swing.JButton();
         buttonCadastrar = new javax.swing.JButton();
 
@@ -53,6 +59,11 @@ public class TelaLogin extends javax.swing.JFrame {
         LabelSenha.setText("Senha:");
 
         buttonLogin.setText("Logar");
+        buttonLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLoginActionPerformed(evt);
+            }
+        });
 
         buttonCadastrar.setText("Registrar");
         buttonCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -82,11 +93,10 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(buttonLogin)
-                        .addGap(51, 51, 51)
-                        .addComponent(buttonCadastrar)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonCadastrar))
                     .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
-                    .addComponent(jPasswordField1))
+                    .addComponent(txtSenha))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -103,12 +113,12 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelSenha)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonLogin)
                     .addComponent(buttonCadastrar))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -116,10 +126,23 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void buttonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarActionPerformed
         // TODO add your handling code here:
-        this.dispose();
         CadastroCliente frame = new CadastroCliente();
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
     }//GEN-LAST:event_buttonCadastrarActionPerformed
+
+    private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
+        // TODO add your handling code here:
+        ClienteDAO cliDao = new ClienteDAO();
+        this.cli = cliDao.getCliente(txtEmail.getText(), txtSenha.getText());
+        if(this.cli != null){
+           MenuInicial menu = new MenuInicial(cli);
+           menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+           menu.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null,"Email ou senha incorretos. Preencha os campos corretamente.");
+        }
+    }//GEN-LAST:event_buttonLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,13 +161,13 @@ public class TelaLogin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -163,7 +186,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel LabelSistemaDeHardware;
     private javax.swing.JButton buttonCadastrar;
     private javax.swing.JButton buttonLogin;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 }
