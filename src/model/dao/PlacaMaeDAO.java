@@ -24,7 +24,7 @@ public class PlacaMaeDAO {
     
     public boolean save(PlacaMae placamae){
         
-        String sql = "insert into PlacaMae (modelo, marca, nrSlot,tipoMemoria,consumoPlacamae,socket,limitacaoMemoria) values (?,?,?,?,?,?,?)";
+        String sql = "insert into PlacaMae (modelo, marca, nrSlot,tipoMemoria,consumoPlacamae,socket,limitacaoMemoriaPlacaMae) values (?,?,?,?,?,?,?)";
         
         PreparedStatement stmt = null;
         try {

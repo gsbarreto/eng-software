@@ -151,25 +151,50 @@ public class CadastroCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        if ((txtEmail.getText().equals(txtConfEmail.getText()))&&(txtSenha.getText().equals(txtConfSenha.getText()))){
-            //System.err.println("cad");
-            JOptionPane criadocomsucesso = new JOptionPane("Cliente cadastrado com sucesso.");
+        
+        try{
+            /*if(txtEmail.getText().equals("")||txtSenha.getText().equals("")){
+                throw new CadastroException("Campos vázios");
+            }*/
             
-            Cliente c = new Cliente();
-            ClienteDAO cli = new ClienteDAO();            
+            if(txtNome.getText().length() >= 50){
+                throw new CadastroException("O campo nome não pode exceder 50 caracteres.");
+            }
+            if(txtEmail.getText().length() >= 50){
+                throw new CadastroException("O campo email não pode exceder 50 caracteres.");
+            }
+            if(txtSenha.getText().length() >= 50){
+                throw new CadastroException("O campo email não pode exceder 50 caracteres.");
+            }
             
-            c.setNome(txtNome.getText());
-            c.setEmail(txtEmail.getText());
-            c.setSenha(txtSenha.getText());         
-           
-            cli.save(c);
-            JOptionPane.showMessageDialog(criadocomsucesso, "Usuario cadastrado com sucesso.");
-            limpaCampos();
-        }else{
-            limpaCampos();
             
-            txtNome.requestFocus();
+            
+            String regex = "[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]+";
+            if(txtEmail.getText().matches(regex)){            
+                //System.err.println("cad");
+                if ((txtEmail.getText().equals(txtConfEmail.getText()))||(txtSenha.getText().equals(txtConfSenha.getText()))){
+                    JOptionPane criadocomsucesso = new JOptionPane("Cliente cadastrado com sucesso.");
+
+                    Cliente c = new Cliente();
+                    ClienteDAO cli = new ClienteDAO();            
+
+                    c.setNome(txtNome.getText());
+                    c.setEmail(txtEmail.getText());
+                    c.setSenha(txtSenha.getText());         
+
+                    cli.save(c);
+                    JOptionPane.showMessageDialog(criadocomsucesso, "Usuario cadastrado com sucesso.");
+                    this.setVisible(false);
+                }else{
+                    throw new CadastroException("Email ou Senha não são iguais");
+                }            
+            }else{
+                throw new CadastroException("Formato do campo email incorreto");
+            }
+        }catch(Exception e){
+        
         }
+        
     }//GEN-LAST:event_btnCadastrarActionPerformed
     public void limpaCampos(){
         txtNome.setText("");

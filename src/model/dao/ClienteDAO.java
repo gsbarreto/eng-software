@@ -27,7 +27,7 @@ public class ClienteDAO {
     
     public boolean save(Cliente cliente){
         
-        String sql = "insert into usuario (nome, email, senha) values (?,?,?)";
+        String sql = "insert into Usuario (nome, email, senha) values (?,?,?)";
         
         PreparedStatement stmt = null;
         try {
@@ -48,7 +48,7 @@ public class ClienteDAO {
     
     
     public Cliente getCliente(String email, String senha){
-        String sql = "select * from usuario where email LIKE ? and senha LIKE ?";
+        String sql = "select * from Usuario where email LIKE ? and senha LIKE ?";
         
         PreparedStatement stmt = null;
         try{
@@ -79,7 +79,7 @@ public class ClienteDAO {
     }
     
     public List<Cliente> getClientes(){
-        String sql = "select * from usuario";
+        String sql = "select * from Usuario";
         ArrayList<Cliente> lista = new ArrayList<Cliente>();
         PreparedStatement stmt = null;
         try{

@@ -21,6 +21,7 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public TelaLogin() {
         initComponents();
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
     }
 
@@ -137,8 +138,9 @@ public class TelaLogin extends javax.swing.JFrame {
         this.cli = cliDao.getCliente(txtEmail.getText(), txtSenha.getText());
         if(this.cli != null){
            MenuInicial menu = new MenuInicial(cli);
-           menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
            menu.setVisible(true);
+           menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+           this.setVisible(false);
         }else{
             JOptionPane.showMessageDialog(null,"Email ou senha incorretos. Preencha os campos corretamente.");
         }

@@ -23,7 +23,7 @@ public class ArmazenamentoDAO {
     }
     public boolean insert(Armazenamento armazenamento){
         
-        String sql = "insert into armazenamento (modelo, marca, capacidade,cache,taxaTransferencia) values (?,?,?,?,?)";
+        String sql = "insert into Armazenamento (modelo, marca, capacidade,cache,taxaTransferencia) values (?,?,?,?,?)";
         
         PreparedStatement stmt = null;
         
@@ -37,7 +37,7 @@ public class ArmazenamentoDAO {
             stmt.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            System.err.print("Erro: "+ex);
+            System.err.print("Erro: " + ex);
             return false;            
         }finally{
             ConnectionFactory.closeConnection(con, stmt);

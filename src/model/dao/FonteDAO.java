@@ -24,7 +24,7 @@ public class FonteDAO {
     
     public boolean save(Fonte fonte){
         
-        String sql = "insert into fonte (modelo, marca, potencia,certificado) values (?,?,?,?)";
+        String sql = "insert into Fonte (modelo, marca, potencia,certificado) values (?,?,?,?)";
         
         PreparedStatement stmt = null;
         try {

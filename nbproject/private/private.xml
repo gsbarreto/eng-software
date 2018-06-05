@@ -5,10 +5,8 @@
         <group>
             <file>file:/home/gabriel/Área%20de%20Trabalho/ProgramaEngSoft/src/model/dao/ClienteDAO.java</file>
             <file>file:/home/gabriel/Área%20de%20Trabalho/ProgramaEngSoft/src/CadastroDePecas.java</file>
-            <file>file:/home/gabriel/Área%20de%20Trabalho/ProgramaEngSoft/src/MenuInicial.java</file>
-            <file>file:/home/gabriel/Área%20de%20Trabalho/ProgramaEngSoft/src/TelaLogin.java</file>
+            <file>file:/home/gabriel/Área%20de%20Trabalho/ProgramaEngSoft/src/model/dao/ArmazenamentoDAO.java</file>
             <file>file:/home/gabriel/Área%20de%20Trabalho/ProgramaEngSoft/src/model/bean/Cliente.java</file>
-            <file>file:/home/gabriel/Área%20de%20Trabalho/ProgramaEngSoft/src/CadastroCliente.java</file>
         </group>
     </open-files>
 </project-private>

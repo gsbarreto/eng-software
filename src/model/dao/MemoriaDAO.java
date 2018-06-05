@@ -24,7 +24,7 @@ public class MemoriaDAO {
     
     public boolean insert(Memoria memoria){
         
-        String sql = "insert into memoria (modelo, marca, tipo,frequenciaMemoria,tamanho) values (?,?,?,?,?)";
+        String sql = "insert into Memoria (modelo, marca, tipo,frequenciaMemoria,tamanho) values (?,?,?,?,?)";
         
         PreparedStatement stmt = null;
         try {

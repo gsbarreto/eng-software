@@ -23,7 +23,7 @@ public class ProcessadorDAO {
     }
     
     public boolean insert(Processador processador){
-        String sql = "insert into processador (marca, numNucleos, modelo,nrThread,frequenciaProcessador,cacheProcessador,socketProcessador) values (?,?,?,?,?,?,?)";
+        String sql = "insert into Processador (marca, numNucleos, modelo,nrThread,frequenciaProcessador,cacheProcessador,socketProcessador) values (?,?,?,?,?,?,?)";
         
         PreparedStatement stmt = null;
         

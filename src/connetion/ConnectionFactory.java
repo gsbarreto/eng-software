@@ -21,7 +21,7 @@ public class ConnectionFactory {
     //AQUI CRIA-SE A CONEXAO COM O BANCO, PRECISA-SE INSERIR O NOME DO BD, BEM COMO SEU USER E PASSWORD LOCAIS
     
     private static final String DRIVER = "com.mysql.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3306/projetoengsoft";
+    private static final String URL = "jdbc:mysql://localhost:3306/mydb";
     private static final String USER = "root";
     private static final String PASS = "biel1996";
     
