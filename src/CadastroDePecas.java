@@ -1,4 +1,11 @@
 
+import Controllers.AlertaException;
+import Controllers.PlacaMaeController;
+import Controllers.ArmazenamentoController;
+import Controllers.FonteController;
+import Controllers.MemoriaController;
+import Controllers.PlacaExpansaoController;
+import Controllers.ProcessadorController;
 import java.util.Set;
 import javax.swing.JOptionPane;
 import model.bean.Armazenamento;
@@ -153,6 +160,12 @@ public class CadastroDePecas extends javax.swing.JFrame {
         jLabel27.setText("Potência:");
 
         jLabel28.setText("Certificado:");
+
+        txtModeloFonte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtModeloFonteActionPerformed(evt);
+            }
+        });
 
         btnSalvarFonte.setText("Salvar");
         btnSalvarFonte.addActionListener(new java.awt.event.ActionListener() {
@@ -503,6 +516,12 @@ public class CadastroDePecas extends javax.swing.JFrame {
             }
         });
 
+        txtModeloMemoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtModeloMemoriaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpanelMemoriaLayout = new javax.swing.GroupLayout(jpanelMemoria);
         jpanelMemoria.setLayout(jpanelMemoriaLayout);
         jpanelMemoriaLayout.setHorizontalGroup(
@@ -653,12 +672,6 @@ public class CadastroDePecas extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jtabbedOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(274, 274, 274)
                 .addComponent(lblCadPecas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -666,6 +679,14 @@ public class CadastroDePecas extends javax.swing.JFrame {
                     .addComponent(jblUser, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jblTime, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(71, 71, 71))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jtabbedOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -681,9 +702,9 @@ public class CadastroDePecas extends javax.swing.JFrame {
                         .addComponent(jblUser)
                         .addGap(9, 9, 9)
                         .addComponent(jblTime)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jtabbedOptions)
-                .addContainerGap())
+                .addGap(18, 18, 18))
         );
 
         jtabbedOptions.getAccessibleContext().setAccessibleName("Processador");
@@ -702,72 +723,11 @@ public class CadastroDePecas extends javax.swing.JFrame {
 
     private void btnSalvarProcessadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarProcessadorActionPerformed
             try{
-                //Campo Marca
-                if(!txtMarcaProcessador.getText().matches("[0-9]*")){
-                    throw new AlertaException("O campo consumo não pode conter letras.");
-                }else if(txtMarcaProcessador.getText().isEmpty()){
-                    throw new AlertaException("O campo consumo não pode estar vázio.");
-                }
-                //Campo Nr Nucleos
-                if(txtNrNucleo.getText().length() > 255){
-                    throw new AlertaException("O campo socket não pode exceder 255 caracteres.");
-                }else if(txtNrNucleo.getText().isEmpty()){
-                    throw new AlertaException("O campo socket não pode estar vázio.");
-                }
-                //Campo Modelo
-                if(!txtModelo.getText().matches("[0-9]*")){
-                    throw new AlertaException("O campo consumo não pode conter letras.");
-                }else if(txtModelo.getText().isEmpty()){
-                    throw new AlertaException("O campo consumo não pode estar vázio.");
-                }
-                //Campo Nr Threads
-                if(txtNrThread.getText().length() > 255){
-                    throw new AlertaException("O campo socket não pode exceder 255 caracteres.");
-                }else if(txtNrThread.getText().isEmpty()){
-                    throw new AlertaException("O campo socket não pode estar vázio.");
-                }
-                //Campo Frequencia
-                if(txtFrequencia.getText().length() > 255){
-                    throw new AlertaException("O campo socket não pode exceder 255 caracteres.");
-                }else if(txtFrequencia.getText().isEmpty()){
-                    throw new AlertaException("O campo socket não pode estar vázio.");
-                }
-                //Campo Cache
-                if(!txtCache.getText().matches("[0-9]*")){
-                    throw new AlertaException("O campo consumo não pode conter letras.");
-                }else if(txtCache.getText().isEmpty()){
-                    throw new AlertaException("O campo consumo não pode estar vázio.");
-                }
-                //Campo Socket
-                if(txtSocket.getText().length() > 255){
-                    throw new AlertaException("O campo socket não pode exceder 255 caracteres.");
-                }else if(txtSocket.getText().isEmpty()){
-                    throw new AlertaException("O campo socket não pode estar vázio.");
-                }
-                JOptionPane criadocomsucesso = new JOptionPane("Processador cadastrado com sucesso.");
-            
-                Processador proc = new Processador();
-                ProcessadorDAO procDAO = new ProcessadorDAO();
-                proc.setMarca(txtMarcaProcessador.getText());
-                proc.setNumNucleos(Integer.parseInt(txtNrNucleo.getText()));
-                proc.setModelo(txtModelo.getText());
-                proc.setNumThread(Integer.parseInt(txtNrThread.getText()));
-                proc.setFrequenciaProcessador(Float.parseFloat(txtFrequencia.getText()));
-                proc.setCacheProcessador(Integer.parseInt(txtCache.getText()));
-                proc.setSocketProcessador(txtSocket.getText());
-
-                procDAO.insert(proc);
-                JOptionPane.showMessageDialog(criadocomsucesso, "Processador cadastrado com sucesso.");
-
-                limpaproc();
+                ProcessadorController pro = new ProcessadorController();
+                pro.inserir(txtMarcaProcessador.getText(),txtModelo.getText(),txtNrNucleo.getText(),txtNrThread.getText(),txtFrequencia.getText(),txtCache.getText(),txtSocket.getText());
             }catch(Exception e){
-            
+                System.out.println("Erro: "+ e.getMessage());
             }
-        
-            
-        
-            
-            
     }//GEN-LAST:event_btnSalvarProcessadorActionPerformed
 
     private void txtMemoriaSuportadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemoriaSuportadaActionPerformed
@@ -779,282 +739,59 @@ public class CadastroDePecas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtConsumoEnergiaActionPerformed
 
     private void btnSalvarFonteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarFonteActionPerformed
-            
         try{
-            //Campo Modelo
-            if(txtModeloFonte.getText().length() > 255){
-                throw new AlertaException("O campo modelo não pode exceder 255 caracteres.");
-            }else if(txtModeloFonte.getText().isEmpty()){
-                throw new AlertaException("O campo modelo não pode estar vázio.");
-            }
-            //Campo Marca
-            if(txtMarcaFonte.getText().length() > 255){
-                throw new AlertaException("O campo marca não pode exceder 255 caracteres.");
-            }else if(txtMarcaFonte.getText().isEmpty()){
-                throw new AlertaException("O campo marca não pode estar vázio.");
-            }
-            //Campo Potencia
-            if(!txtPotenciaFonte.getText().matches("[0-9]*")){
-                throw new AlertaException("O campo potencia não pode conter letras.");
-            }else if(txtPotenciaFonte.getText().isEmpty()){
-                throw new AlertaException("O campo potencia não pode estar vázio.");
-            }
-            //Campo Certificado
-            if(txtCertificadoFonte.getText().length() > 255){
-                throw new AlertaException("O campo certificado não pode exceder 255 caracteres.");
-            }else if(txtCertificadoFonte.getText().isEmpty()){
-                throw new AlertaException("O campo certificado não pode estar vázio.");
-            }
-            
-            JOptionPane criadocomsucesso = new JOptionPane("Fonte cadastrada com sucesso.");
-            
-            Fonte fonte = new Fonte();
-            FonteDAO fonteDAO = new FonteDAO();            
-            fonte.setModelo(txtModeloFonte.getText());            
-            fonte.setMarca((txtMarcaFonte.getText()));            
-            fonte.setPotencia(Integer.parseInt(txtPotenciaFonte.getText())); 
-            fonte.setCertificado(txtCertificadoFonte.getText());            
-            fonteDAO.save(fonte);
-            JOptionPane.showMessageDialog(criadocomsucesso, "Fonte cadastrada com sucesso.");
-            
-            limpafonte();
-        }catch(Exception e){
-            
+            FonteController fon = new FonteController();
+            fon.inserir(txtModeloFonte.getText(),txtMarcaFonte.getText(),txtPotenciaFonte.getText(),txtCertificadoFonte.getText());
+        }catch(Controllers.AlertaException e){
+            System.out.println("Erro: "+ e.getMessage());
         }
-        
-            
     }//GEN-LAST:event_btnSalvarFonteActionPerformed
 
     private void btnSalvarPlacaMaeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPlacaMaeActionPerformed
             try{
-                //Campo Modelo
-                if(txtmodeloPlacamae.getText().length() > 255){
-                    throw new AlertaException("O campo modelo não pode exceder 255 caracteres.");
-                }else if(txtmodeloPlacamae.getText().isEmpty()){
-                    throw new AlertaException("O campo modelo não pode estar vázio.");
-                }
-                //Campo Marca
-                if(txtMarcaPlacaMae.getText().length() > 255){
-                    throw new AlertaException("O campo marca não pode exceder 255 caracteres.");
-                }else if(txtMarcaPlacaMae.getText().isEmpty()){
-                    throw new AlertaException("O campo marca não pode estar vázio.");
-                }
-                //Campo Nr Slots Placa mae
-                if(!txtNrSlotsPlacamae.getText().matches("[0-9]*")){
-                    throw new AlertaException("O campo numero de slots não pode conter letras.");
-                }else if(txtNrSlotsPlacamae.getText().isEmpty()){
-                    throw new AlertaException("O campo numero de slots não pode estar vázio.");
-                }
-                //Campo Tipo Memoria
-                if(txtTipoMemoria.getText().length() > 255){
-                    throw new AlertaException("O campo tipo de memoria não pode exceder 255 caracteres.");
-                }else if(txtTipoMemoria.getText().isEmpty()){
-                    throw new AlertaException("O campo tipo de memoria não pode estar vázio.");
-                }
-                //Campo Consumo
-                if(!txtConsumoEnergia.getText().matches("[0-9]*")){
-                    throw new AlertaException("O campo consumo não pode conter letras.");
-                }else if(txtConsumoEnergia.getText().isEmpty()){
-                    throw new AlertaException("O campo consumo não pode estar vázio.");
-                }
-                //Campo Tipo Socket
-                if(txtSocketPlacaMae.getText().length() > 255){
-                    throw new AlertaException("O campo socket não pode exceder 255 caracteres.");
-                }else if(txtSocketPlacaMae.getText().isEmpty()){
-                    throw new AlertaException("O campo socket não pode estar vázio.");
-                }
-                //Campo Limitacao Memoria
-                if(!txtLimiteMemoriaSuportada.getText().matches("[0-9]*")){
-                    throw new AlertaException("O campo limite de memoria suporatada não pode conter letras.");
-                }else if(txtLimiteMemoriaSuportada.getText().isEmpty()){
-                    throw new AlertaException("O campo limite de memoria suporatada não pode estar vázio.");
-                }
-                
-                JOptionPane criadocomsucesso = new JOptionPane("Placa mae cadastrada com sucesso.");            
-                PlacaMae motherboard = new PlacaMae();
-                PlacaMaeDAO motherboardDAO = new PlacaMaeDAO(); 
-
-                motherboard.setModelo(txtmodeloPlacamae.getText());
-                motherboard.setMarca(txtMarcaPlacaMae.getText());
-                motherboard.setNrSlot(Integer.parseInt(txtNrSlotsPlacamae.getText()));
-                motherboard.setTipoMemoria(txtTipoMemoria.getText());
-                motherboard.setConsumoPlacamae(Integer.parseInt(txtConsumoEnergia.getText()));
-                motherboard.setSocket(txtSocketPlacaMae.getText());
-                motherboard.setLimitacaoMemoriaPlacaMae(Integer.parseInt(txtLimiteMemoriaSuportada.getText()));       
-
-
-                motherboardDAO.save(motherboard);
-                JOptionPane.showMessageDialog(criadocomsucesso, "Placa mae cadastrada com sucesso.");
-
-                limpaplacamae();
-            }catch(Exception e){
-            
+                PlacaMaeController  pcm = new PlacaMaeController();
+                pcm.inserir(txtmodeloPlacamae.getText(),txtMarcaPlacaMae.getText(),txtNrSlotsPlacamae.getText(),txtMemoriaSuportada.getText(),txtConsumoEnergia.getText(),txtSocketPlacaMae.getText(),txtLimiteMemoriaSuportada.getText());
+            }catch(AlertaException e){
+                System.out.println("Erro: "+ e.getMessage());
             }
     }//GEN-LAST:event_btnSalvarPlacaMaeActionPerformed
 
     private void btnSalvarArmazenamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarArmazenamentoActionPerformed
             try{
-                //Campo Modelo
-                if(txtModeloArmazenamento.getText().length() > 255){
-                    throw new AlertaException("O campo modelo não pode exceder 255 caracteres.");
-                }else if(txtModeloArmazenamento.getText().isEmpty()){
-                    throw new AlertaException("O campo modelo não pode estar vázio.");
-                }
-                //Campo Marca
-                if(txtMarcaArmazenamento.getText().length() > 255){
-                    throw new AlertaException("O campo marca não pode exceder 255 caracteres.");
-                }else if(txtMarcaArmazenamento.getText().isEmpty()){
-                    throw new AlertaException("O campo marca não pode estar vázio.");
-                }
-                //Campo Capacidade
-                if(!txtCapacidadeArmazenamento.getText().matches("[0-9]*")){
-                    throw new AlertaException("O campo capacidade não pode conter letras.");
-                }else if(txtCapacidadeArmazenamento.getText().isEmpty()){
-                    throw new AlertaException("O campo capacidade não pode estar vázio.");
-                }
-                //Campo Cache
-                if(!txtCacheArmazenamento.getText().matches("[0-9]*")){
-                    throw new AlertaException("O campo cache não pode conter letras.");
-                }else if(txtCacheArmazenamento.getText().isEmpty()){
-                    throw new AlertaException("O campo cache não pode estar vázio.");
-                }
-                //Campo Taxa de Transferencia
-                if(!txtTaxaTransArmazenamento.getText().matches("[0-9]*")){
-                    throw new AlertaException("O campo taxa de transferencia não pode conter letras.");
-                }else if(txtTaxaTransArmazenamento.getText().isEmpty()){
-                    throw new AlertaException("O campo taxa de transferencia não pode estar vázio.");
-                }
-                
-                JOptionPane criadocomsucesso = new JOptionPane("Unidade de Armazenamento cadastrada com sucesso.");            
-                Armazenamento hd = new Armazenamento();
-                ArmazenamentoDAO hdDAO = new ArmazenamentoDAO(); 
-
-                hd.setModelo(txtModeloArmazenamento.getText());
-                hd.setMarca(txtMarcaArmazenamento.getText());
-                hd.setCapacidade(Integer.parseInt(txtCapacidadeArmazenamento.getText()));
-                hd.setCache(Integer.parseInt(txtCacheArmazenamento.getText()));
-                hd.setTaxaTransferencia(Float.parseFloat(txtTaxaTransArmazenamento.getText()));             
-
-
-                hdDAO.insert(hd);
-                JOptionPane.showMessageDialog(criadocomsucesso, "Unidade de Armazenamento cadastrada com sucesso.");
-
-                limpaarmazenamento();
-            }catch(Exception e){
-                
-            }
-            
+                ArmazenamentoController arm = new ArmazenamentoController();
+                arm.inserir(txtModeloArmazenamento.getText(),txtMarcaArmazenamento.getText(),txtCapacidadeArmazenamento.getText(),txtCacheArmazenamento.getText(),txtTaxaTransArmazenamento.getText());
+            }catch(Controllers.AlertaException e){
+                System.out.println("Erro: "+ e.getMessage());
+            }            
     }//GEN-LAST:event_btnSalvarArmazenamentoActionPerformed
 
     private void btnSalvarMemoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarMemoriaActionPerformed
             try{
-                //Campo Modelo
-                if(txtModeloMemoria.getText().length() > 255){
-                    throw new AlertaException("O campo modelo não pode exceder 255 caracteres.");
-                }else if(txtModeloMemoria.getText().isEmpty()){
-                    throw new AlertaException("O campo modelo não pode estar vázio.");
-                }
-                //Campo Marca
-                if(txtMarcaMemoria.getText().length() > 255){
-                    throw new AlertaException("O campo marca não pode exceder 255 caracteres.");
-                }else if(txtMarcaMemoria.getText().isEmpty()){
-                    throw new AlertaException("O campo marca não pode estar vázio.");
-                }
-                //Campo Marca
-                if(txtTipoMemoria.getText().length() > 255){
-                    throw new AlertaException("O campo tipo não pode exceder 255 caracteres.");
-                }else if(txtTipoMemoria.getText().isEmpty()){
-                    throw new AlertaException("O campo tipo não pode estar vázio.");
-                }
-                //Campo Frequencia
-                if(!txtFreqMemoria.getText().matches("[0-9]*")){
-                    throw new AlertaException("O campo frequencia não pode conter letras.");
-                }else if(txtFreqMemoria.getText().isEmpty()){
-                    throw new AlertaException("O campo frequencia não pode estar vázio.");
-                }
-                //Campo Tamanho
-                if(!txtTamanhoMemoria.getText().matches("[0-9]*")){
-                    throw new AlertaException("O campo tamanho não pode conter letras.");
-                }else if(txtTamanhoMemoria.getText().isEmpty()){
-                    throw new AlertaException("O campo tamanho não pode estar vázio.");
-                }
-                
-                JOptionPane criadocomsucesso = new JOptionPane("Memoria cadastrada com sucesso.");            
-                Memoria ram = new Memoria();
-                MemoriaDAO ramDAO = new MemoriaDAO(); 
-
-                ram.setModelo(txtModeloMemoria.getText());
-                ram.setMarca(txtMarcaMemoria.getText());
-                ram.setTipo(txtTipoMemoria.getText());
-                ram.setFrequenciaMemoria(Float.parseFloat(txtFreqMemoria.getText()));
-                ram.setTamanho(Integer.parseInt(txtTamanhoMemoria.getText()));
-
-                ramDAO.insert(ram);
-                JOptionPane.showMessageDialog(criadocomsucesso, "Memoria cadastrada com sucesso.");
-                limpamemoria();
-            }catch(Exception e){}
-            
+                MemoriaController mem = new MemoriaController();
+                mem.inserir(txtModeloMemoria.getText(),txtMarcaMemoria.getText(),txtTipoMemoria.getText(),txtFreqMemoria.getText(),txtTamanhoMemoria.getText());
+            }catch(AlertaException e){
+                System.out.println("Erro: "+ e.getMessage());
+            }            
     }//GEN-LAST:event_btnSalvarMemoriaActionPerformed
 
     private void btnSalvarPEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPEActionPerformed
             try{
-                //Campo Nome
-                if(txtNomePE.getText().length() > 255){
-                    throw new AlertaException("O campo nome não pode exceder 255 caracteres.");
-                }else if(txtNomePE.getText().isEmpty()){
-                    throw new AlertaException("O campo nome não pode estar vázio.");
-                }
-                //Campo Marca
-                if(txtMarcaPE.getText().length() > 255){
-                    throw new AlertaException("O campo marca não pode exceder 255 caracteres.");
-                }else if(txtMarcaPE.getText().isEmpty()){
-                    throw new AlertaException("O campo marca não pode estar vázio.");
-                }
-                //Campo CUDA
-                if(!txtNucleoCUDAPE.getText().matches("[0-9]*")){
-                    throw new AlertaException("O campo nucleo cuda não pode conter letras.");
-                }else if(txtNucleoCUDAPE.getText().isEmpty()){
-                    throw new AlertaException("O campo nucleo cuda não pode estar vázio.");
-                }
-                //Campo Frequencia
-                if(!txtFrequenciaPE.getText().matches("[0-9]*")){
-                    throw new AlertaException("O campo frequencia não pode conter letras.");
-                }else if(txtFrequenciaPE.getText().isEmpty()){
-                    throw new AlertaException("O campo frequencia não pode estar vázio.");
-                }
-                //Campo Memoria
-                if(!txtMemoriaPE.getText().matches("[0-9]*")){
-                    throw new AlertaException("O campo memoria não pode conter letras.");
-                }else if(txtMemoriaPE.getText().isEmpty()){
-                    throw new AlertaException("O campo memoria não pode estar vázio.");
-                }
-                //Campo Consumo
-                if(!txtConsumoPE.getText().matches("[0-9]*")){
-                    throw new AlertaException("O campo consumo não pode conter letras.");
-                }else if(txtConsumoPE.getText().isEmpty()){
-                    throw new AlertaException("O campo consumo não pode estar vázio.");
-                }
-                
-                JOptionPane criadocomsucesso = new JOptionPane("Placa de expansao cadastrada com sucesso.");            
-                PlacaExpansao pe = new PlacaExpansao();
-                PlacaExpansaoDAO peDAO = new PlacaExpansaoDAO(); 
-
-                pe.setNome(txtNomePE.getText());
-                pe.setMarca(txtMarcaPE.getText());
-                pe.setNucleosCUDA(Integer.parseInt(txtNucleoCUDAPE.getText()));
-                pe.setFrequenciaCORE(Float.parseFloat(txtFrequenciaPE.getText()));
-                pe.setMemoria(Integer.parseInt(txtMemoriaPE.getText()));
-                pe.setConsumo(Integer.parseInt(txtConsumoPE.getText()));
-
-                peDAO.insert(pe);
-                JOptionPane.showMessageDialog(criadocomsucesso, "Placa de expansao cadastrada com sucesso.");
-                limpaplacaexp();
-            }catch(Exception e){
-            
+                PlacaExpansaoController ple = new PlacaExpansaoController();
+                ple.inserir(txtNomePE.getText(),txtMarcaPE.getText(),txtNucleoCUDAPE.getText(),txtFrequenciaPE.getText(),txtMemoriaPE.getText(),txtConsumoPE.getText());
+            }catch(AlertaException e){
+                System.out.println("Erro: "+ e.getMessage());
             }
             
         
     }//GEN-LAST:event_btnSalvarPEActionPerformed
+
+    private void txtModeloFonteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtModeloFonteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtModeloFonteActionPerformed
+
+    private void txtModeloMemoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtModeloMemoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtModeloMemoriaActionPerformed
 
     /**
      * 

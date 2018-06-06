@@ -143,7 +143,7 @@ public class TelaLogin extends javax.swing.JFrame {
                menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                this.setVisible(false);
             }else{
-                throw new AlertaException("Email ou senha incorretos. Preencha os campos corretamente.");
+                throw new Controllers.AlertaException("Email ou senha incorretos. Preencha os campos corretamente.");
             }
         }catch(Exception e){
             

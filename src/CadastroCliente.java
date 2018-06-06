@@ -1,5 +1,10 @@
 
+import Controllers.AlertaException;
+import Controllers.ClienteController;
+import java.awt.event.ActionEvent;
 import java.util.HashSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.bean.Cliente;
 import model.dao.ClienteDAO;
@@ -24,7 +29,8 @@ public class CadastroCliente extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -91,9 +97,9 @@ public class CadastroCliente extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(151, Short.MAX_VALUE)
+                .addContainerGap(182, Short.MAX_VALUE)
                 .addComponent(btnCadastrar)
-                .addGap(158, 158, 158))
+                .addGap(127, 127, 127))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -109,9 +115,8 @@ public class CadastroCliente extends javax.swing.JFrame {
                             .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(txtEmail)
                             .addComponent(txtConfEmail)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtConfSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                                .addComponent(txtSenha, javax.swing.GroupLayout.Alignment.LEADING))))
+                            .addComponent(txtConfSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                            .addComponent(txtSenha)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(124, 124, 124)
                         .addComponent(jLabel5)))
@@ -151,48 +156,14 @@ public class CadastroCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        ClienteController cli = new ClienteController();
         
-        try{
-            if(txtEmail.getText().isEmpty()||txtSenha.getText().isEmpty()||txtNome.getText().isEmpty()||txtConfSenha.getText().isEmpty()||txtConfEmail.getText().isEmpty()){
-                throw new AlertaException("Campos vázios");
+        try {
+            if(cli.inserir(txtNome.getText(), txtEmail.getText(), txtConfEmail.getText(), txtSenha.getText(), txtConfSenha.getText())){
+                this.setVisible(false);
             }
-            
-            if(txtNome.getText().length() > 50){
-                throw new AlertaException("O campo nome não pode exceder 50 caracteres.");
-            }
-            if(txtEmail.getText().length() > 50){
-                throw new AlertaException("O campo email não pode exceder 50 caracteres.");
-            }
-            if(txtSenha.getText().length() > 50){
-                throw new AlertaException("O campo email não pode exceder 50 caracteres.");
-            }
-            
-            
-            
-            String regex = "[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]+";
-            if(txtEmail.getText().matches(regex)){            
-                //System.err.println("cad");
-                if ((txtEmail.getText().equals(txtConfEmail.getText()))||(txtSenha.getText().equals(txtConfSenha.getText()))){
-                    JOptionPane criadocomsucesso = new JOptionPane("Cliente cadastrado com sucesso.");
-
-                    Cliente c = new Cliente();
-                    ClienteDAO cli = new ClienteDAO();            
-
-                    c.setNome(txtNome.getText());
-                    c.setEmail(txtEmail.getText());
-                    c.setSenha(txtSenha.getText());         
-
-                    cli.save(c);
-                    JOptionPane.showMessageDialog(criadocomsucesso, "Usuario cadastrado com sucesso.");
-                    this.setVisible(false);
-                }else{
-                    throw new AlertaException("Email ou Senha não são iguais");
-                }            
-            }else{
-                throw new AlertaException("Formato do campo email incorreto");
-            }
-        }catch(Exception e){
-        
+        } catch (AlertaException ex) {
+            System.out.println("Erro: "+ ex.getMessage());
         }
         
     }//GEN-LAST:event_btnCadastrarActionPerformed

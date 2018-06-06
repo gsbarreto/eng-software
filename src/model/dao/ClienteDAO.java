@@ -27,6 +27,8 @@ public class ClienteDAO {
     
     public boolean save(Cliente cliente){
         
+        String sqlVerifica = "select * from Usuario where email=?";
+        
         String sql = "insert into Usuario (nome, email, senha) values (?,?,?)";
         
         PreparedStatement stmt = null;
