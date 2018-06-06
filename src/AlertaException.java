@@ -11,13 +11,13 @@ import javax.swing.JOptionPane;
  *
  * @author gabriel
  */
-public class CadastroException extends Exception {
+public class AlertaException extends Exception {
 
     /**
      * Creates a new instance of <code>CadastroException</code> without detail
      * message.
      */
-    public CadastroException() {
+    public AlertaException() {
     }
 
     /**
@@ -26,7 +26,7 @@ public class CadastroException extends Exception {
      *
      * @param msg the detail message.
      */
-    public CadastroException(String msg) {
+    public AlertaException(String msg) {
         JOptionPane caixa = new JOptionPane(msg);
         JOptionPane.showMessageDialog(caixa, msg);
     }

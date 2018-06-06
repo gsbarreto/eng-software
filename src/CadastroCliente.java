@@ -153,18 +153,18 @@ public class CadastroCliente extends javax.swing.JFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         
         try{
-            /*if(txtEmail.getText().equals("")||txtSenha.getText().equals("")){
-                throw new CadastroException("Campos vázios");
-            }*/
+            if(txtEmail.getText().isEmpty()||txtSenha.getText().isEmpty()||txtNome.getText().isEmpty()||txtConfSenha.getText().isEmpty()||txtConfEmail.getText().isEmpty()){
+                throw new AlertaException("Campos vázios");
+            }
             
-            if(txtNome.getText().length() >= 50){
-                throw new CadastroException("O campo nome não pode exceder 50 caracteres.");
+            if(txtNome.getText().length() > 50){
+                throw new AlertaException("O campo nome não pode exceder 50 caracteres.");
             }
-            if(txtEmail.getText().length() >= 50){
-                throw new CadastroException("O campo email não pode exceder 50 caracteres.");
+            if(txtEmail.getText().length() > 50){
+                throw new AlertaException("O campo email não pode exceder 50 caracteres.");
             }
-            if(txtSenha.getText().length() >= 50){
-                throw new CadastroException("O campo email não pode exceder 50 caracteres.");
+            if(txtSenha.getText().length() > 50){
+                throw new AlertaException("O campo email não pode exceder 50 caracteres.");
             }
             
             
@@ -186,10 +186,10 @@ public class CadastroCliente extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(criadocomsucesso, "Usuario cadastrado com sucesso.");
                     this.setVisible(false);
                 }else{
-                    throw new CadastroException("Email ou Senha não são iguais");
+                    throw new AlertaException("Email ou Senha não são iguais");
                 }            
             }else{
-                throw new CadastroException("Formato do campo email incorreto");
+                throw new AlertaException("Formato do campo email incorreto");
             }
         }catch(Exception e){
         

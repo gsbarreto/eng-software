@@ -1,4 +1,5 @@
 
+import javax.swing.JFrame;
 import model.bean.Cliente;
 
 /*
@@ -145,6 +146,7 @@ public class MenuInicial extends javax.swing.JFrame {
     private void buttonCadastroPecasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastroPecasActionPerformed
         // TODO add your handling code here:
         CadastroDePecas cadPecas = new CadastroDePecas(this.cliente);
+        cadPecas.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         cadPecas.setVisible(true);
         
     }//GEN-LAST:event_buttonCadastroPecasActionPerformed

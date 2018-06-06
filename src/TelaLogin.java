@@ -134,15 +134,19 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
         // TODO add your handling code here:
-        ClienteDAO cliDao = new ClienteDAO();
-        this.cli = cliDao.getCliente(txtEmail.getText(), txtSenha.getText());
-        if(this.cli != null){
-           MenuInicial menu = new MenuInicial(cli);
-           menu.setVisible(true);
-           menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-           this.setVisible(false);
-        }else{
-            JOptionPane.showMessageDialog(null,"Email ou senha incorretos. Preencha os campos corretamente.");
+        try{
+            ClienteDAO cliDao = new ClienteDAO();
+            this.cli = cliDao.getCliente(txtEmail.getText(), txtSenha.getText());
+            if(this.cli != null){
+               MenuInicial menu = new MenuInicial(cli);
+               menu.setVisible(true);
+               menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+               this.setVisible(false);
+            }else{
+                throw new AlertaException("Email ou senha incorretos. Preencha os campos corretamente.");
+            }
+        }catch(Exception e){
+            
         }
     }//GEN-LAST:event_buttonLoginActionPerformed
 
