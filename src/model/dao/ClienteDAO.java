@@ -6,9 +6,12 @@
 package model.dao;
 
 import connetion.ConnectionFactory;
+import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import model.bean.Cliente;
 
 /**
@@ -22,9 +25,11 @@ public class ClienteDAO {
         con = ConnectionFactory.getConnection();
     }
     
-    public boolean add(Cliente cliente){
+    public boolean save(Cliente cliente){
         
-        String sql = "insert into usuario (nome, email, senha) values (?,?,?)";
+        String sqlVerifica = "select * from Usuario where email=?";
+        
+        String sql = "insert into Usuario (nome, email, senha) values (?,?,?)";
         
         PreparedStatement stmt = null;
         try {
@@ -44,4 +49,62 @@ public class ClienteDAO {
     
     
     
+    public Cliente getCliente(String email, String senha){
+        String sql = "select * from Usuario where email LIKE ? and senha LIKE ?";
+        
+        PreparedStatement stmt = null;
+        try{
+            System.out.println(email);
+            
+            if(email == null || senha == null || email.trim().equals("") || senha.trim().equals("")){
+                return null;
+            }
+            
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, "%"+email+"%");
+            stmt.setString(2, "%"+senha+"%");
+            ResultSet rs = stmt.executeQuery();
+            
+            if(rs.next()){
+                Cliente cli = new Cliente(rs.getString("nome"),rs.getString("email"),rs.getString("senha"));
+            
+                return cli;
+            }else{
+                return null;
+            }        
+
+        }catch(SQLException ex){
+            return null;
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
+    public List<Cliente> getClientes(){
+        String sql = "select * from Usuario";
+        ArrayList<Cliente> lista = new ArrayList<Cliente>();
+        PreparedStatement stmt = null;
+        try{
+            stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            
+            
+            while(rs.next()){
+                Cliente cli = new Cliente(rs.getString("nome"),rs.getString("email"),rs.getString("senha"));
+                lista.add(cli);
+            }
+
+            return lista;           
+            
+            
+        }catch(SQLException ex){
+            System.out.println("Erro: ");
+            return null;
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
+    
+     
 }

@@ -1,0 +1,228 @@
+CREATE TABLE IF NOT EXISTS `projetoengsoft`.`Usuario` (
+  `idUser` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(50) NOT NULL,
+  `email` VARCHAR(50) NOT NULL,
+  `senha` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`idUser`))
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `projetoengsoft`.`Processador` (
+  `idProcessador` INT NOT NULL AUTO_INCREMENT,
+  `marca` VARCHAR(255) NOT NULL,
+  `numNucleos` INT NOT NULL,
+  `modelo` VARCHAR(255) NOT NULL,
+  `nrThread` INT NOT NULL,
+  `frequenciaProcessador` FLOAT NOT NULL,
+  `cacheProcessador` INT NOT NULL,
+  `socketProcessador` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`idProcessador`))
+ENGINE = InnoDB;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS `projetoengsoft`.`PlacaMae` (
+  `idPlacaMae` INT NOT NULL AUTO_INCREMENT,
+  `modelo` VARCHAR(255) NOT NULL,
+  `marca` VARCHAR(100) NOT NULL,
+  `nrSlot` INT NOT NULL,
+  `tipoMemoria` VARCHAR(255) NOT NULL,
+  `consumoPlacamae` INT NOT NULL,
+  `socket` VARCHAR(50) NOT NULL,
+  `limitacaoMemoriaPlacaMae` INT NOT NULL,
+  PRIMARY KEY (`idPlacaMae`))
+ENGINE = InnoDB;
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS `projetoengsoft`.`PlacaExpansao` (
+  `idPlacaExpansao` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(255) NOT NULL,
+  `marca` VARCHAR(255) NOT NULL,
+  `nucleosCUDA` INT NOT NULL,
+  `frequenciaCORE` FLOAT NOT NULL,
+  `memoria` INT NOT NULL,
+  `consumo` INT NOT NULL,
+  PRIMARY KEY (`idPlacaExpansao`))
+ENGINE = InnoDB;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS `projetoengsoft`.`Memoria` (
+  `idMemoria` INT NOT NULL AUTO_INCREMENT,
+  `modelo` VARCHAR(255) NOT NULL,
+  `marca` VARCHAR(255) NOT NULL,
+  `tipo` VARCHAR(255) NOT NULL,
+  `frequenciaMemoria` FLOAT NOT NULL,
+  `tamanho` INT NOT NULL,
+  PRIMARY KEY (`idMemoria`))
+ENGINE = InnoDB;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS `projetoengsoft`.`Armazenamento` (
+  `idArmazenamento` INT NOT NULL AUTO_INCREMENT,
+  `modelo` VARCHAR(255) NOT NULL,
+  `marca` VARCHAR(255) NOT NULL,
+  `capacidade` INT NOT NULL,
+  `cache` INT NOT NULL,
+  `taxaTransferencia` FLOAT NOT NULL,
+  PRIMARY KEY (`idArmazenamento`))
+ENGINE = InnoDB;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS `projetoengsoft`.`Fonte` (
+  `idFonte` INT NOT NULL AUTO_INCREMENT,
+  `modelo` VARCHAR(255) NOT NULL,
+  `marca` VARCHAR(255) NOT NULL,
+  `potencia` INT NOT NULL,
+  `certificado` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`idFonte`))
+ENGINE = InnoDB;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS `projetoengsoft`.`Montagem` (
+  `idMontagem` INT NOT NULL AUTO_INCREMENT,
+  `Usuario_idUser` INT NOT NULL,
+  `PlacaMae_idPlacaMae` INT NOT NULL,
+  `Processador_idProcessador` INT NOT NULL,
+  `PlacaExpansao_idPlacaExpansao` INT NOT NULL,
+  `Memoria_idMemoria` INT NOT NULL,
+  `Armazenamento_idArmazenamento` INT NOT NULL,
+  `Fonte_idFonte` INT NOT NULL,
+  `descricaoMontagem` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`idMontagem`, `Usuario_idUser`, `PlacaMae_idPlacaMae`, `Processador_idProcessador`, `PlacaExpansao_idPlacaExpansao`, `Memoria_idMemoria`, `Armazenamento_idArmazenamento`, `Fonte_idFonte`),
+  INDEX `fk_Montagem_Usuario_idx` (`Usuario_idUser` ASC),
+  INDEX `fk_Montagem_PlacaMae1_idx` (`PlacaMae_idPlacaMae` ASC),
+  INDEX `fk_Montagem_Processador1_idx` (`Processador_idProcessador` ASC),
+  INDEX `fk_Montagem_PlacaExpansao1_idx` (`PlacaExpansao_idPlacaExpansao` ASC),
+  INDEX `fk_Montagem_Memoria1_idx` (`Memoria_idMemoria` ASC),
+  INDEX `fk_Montagem_Armazenamento1_idx` (`Armazenamento_idArmazenamento` ASC),
+  INDEX `fk_Montagem_Fonte1_idx` (`Fonte_idFonte` ASC),
+  CONSTRAINT `fk_Montagem_Usuario`
+    FOREIGN KEY (`Usuario_idUser`)
+    REFERENCES `projetoengsoft`.`Usuario` (`idUser`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Montagem_PlacaMae1`
+    FOREIGN KEY (`PlacaMae_idPlacaMae`)
+    REFERENCES `projetoengsoft`.`PlacaMae` (`idPlacaMae`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Montagem_Processador1`
+    FOREIGN KEY (`Processador_idProcessador`)
+    REFERENCES `projetoengsoft`.`Processador` (`idProcessador`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Montagem_PlacaExpansao1`
+    FOREIGN KEY (`PlacaExpansao_idPlacaExpansao`)
+    REFERENCES `projetoengsoft`.`PlacaExpansao` (`idPlacaExpansao`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Montagem_Memoria1`
+    FOREIGN KEY (`Memoria_idMemoria`)
+    REFERENCES `projetoengsoft`.`Memoria` (`idMemoria`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Montagem_Armazenamento1`
+    FOREIGN KEY (`Armazenamento_idArmazenamento`)
+    REFERENCES `projetoengsoft`.`Armazenamento` (`idArmazenamento`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Montagem_Fonte1`
+    FOREIGN KEY (`Fonte_idFonte`)
+    REFERENCES `projetoengsoft`.`Fonte` (`idFonte`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
