@@ -16,12 +16,6 @@ import model.dao.FonteDAO;
 public class FonteController {
     public boolean inserir(String modelo,String marca,String potencia,String certificado) throws AlertaException{
             String msg;
-            
-            if(modelo.isEmpty()||marca.isEmpty()||potencia.isEmpty()||certificado.isEmpty()){
-                msg = "Por favor preencha todos os campos.";
-                alertaBox(msg);
-                throw new AlertaException(msg);
-            }
             //Campo Modelo
             if(modelo.length() > 255){
                 msg = "O campo modelo não pode exceder 255 caracteres.";

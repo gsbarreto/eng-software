@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author gabriel
  */
-public class CadastroClienteTeste {
+public class ClienteTest {
     
-    public CadastroClienteTeste() {
+    public ClienteTest() {
     }
     
     @BeforeClass

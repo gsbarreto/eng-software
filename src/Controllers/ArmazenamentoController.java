@@ -16,12 +16,7 @@ import model.dao.ArmazenamentoDAO;
 public class ArmazenamentoController{
     public boolean inserir(String modelo,String marca,String capacidade,String cache,String taxa) throws AlertaException{
                 String msg;
-                
-                if(modelo.isEmpty()||marca.isEmpty()||capacidade.isEmpty()||cache.isEmpty()||taxa.isEmpty()){
-                    msg = "Por favor preencha todos os campos.";
-                    alertBox(msg);
-                    throw new AlertaException(msg);
-                }
+               
                 //Campo Modelo
                 if(modelo.length() > 255){
                     msg = "O campo modelo não pode exceder 255 caracteres.";
