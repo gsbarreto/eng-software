@@ -160,9 +160,11 @@ public class CadastroCliente extends javax.swing.JFrame {
         
         try {
             if(cli.inserir(txtNome.getText(), txtEmail.getText(), txtConfEmail.getText(), txtSenha.getText(), txtConfSenha.getText())){
+                alertBox("Usuario cadastrado com sucesso.");
                 this.setVisible(false);
             }
         } catch (AlertaException ex) {
+            alertBox(ex.getMessage());
             System.out.println("Erro: "+ ex.getMessage());
         }
         
@@ -178,6 +180,9 @@ public class CadastroCliente extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
+    public void alertBox(String msg){
+        JOptionPane.showMessageDialog(null, msg);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnCadastrar;

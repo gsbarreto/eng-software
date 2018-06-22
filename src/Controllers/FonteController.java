@@ -19,41 +19,33 @@ public class FonteController {
             //Campo Modelo
             if(modelo.length() > 255){
                 msg = "O campo modelo não pode exceder 255 caracteres.";
-                alertaBox(msg);
                 throw new AlertaException(msg);
             }else if(modelo.isEmpty()){
                 msg = "O campo modelo não pode estar vázio.";
-                alertaBox(msg);
                 throw new AlertaException(msg);
             }
             //Campo Marca
             if(marca.length() > 255){
                 msg = "O campo marca não pode exceder 255 caracteres.";
-                alertaBox(msg);
                 throw new AlertaException(msg);
             }else if(marca.isEmpty()){
                 msg = "O campo marca não pode estar vázio.";
-                alertaBox(msg);
                 throw new AlertaException(msg);
             }
             //Campo Potencia
             if(!potencia.matches("[0-9]*")){
                 msg = "O campo potencia não pode conter letras.";
-                alertaBox(msg);
                 throw new AlertaException(msg);
             }else if(potencia.isEmpty()){
                 msg = "O campo potencia não pode estar vázio.";
-                alertaBox(msg);
                 throw new AlertaException(msg);
             }
             //Campo Certificado
             if(certificado.length() > 255){
                 msg = "O campo certificado não pode exceder 255 caracteres.";
-                alertaBox(msg);
                 throw new AlertaException(msg);
             }else if(certificado.isEmpty()){
                 msg = "O campo certificado não pode estar vázio.";
-                alertaBox(msg);
                 throw new AlertaException(msg);
             }
             
@@ -64,11 +56,7 @@ public class FonteController {
             fonte.setPotencia(Integer.parseInt(potencia)); 
             fonte.setCertificado(certificado);            
             fonteDAO.save(fonte);
-            alertaBox("Fonte cadastrada com sucesso");
             return true;
     }
     
-    public void alertaBox(String msg){
-        JOptionPane.showMessageDialog(null, msg);
-    }
 }

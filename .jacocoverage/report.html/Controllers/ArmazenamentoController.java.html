@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ArmazenamentoController.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;ProgramaEngSoft&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Controllers</a> &gt; <span class="el_source">ArmazenamentoController.java</span></div><h1>ArmazenamentoController.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Controllers;
+
+import javax.swing.JOptionPane;
+import model.bean.Armazenamento;
+import model.dao.ArmazenamentoDAO;
+
+/**
+ *
+ * @author gabriel
+ */
+<span class="fc" id="L16">public class ArmazenamentoController{</span>
+    public boolean inserir(String modelo,String marca,String capacidade,String cache,String taxa) throws AlertaException{
+                String msg;
+               
+                //Campo Modelo
+<span class="fc bfc" id="L21" title="All 2 branches covered.">                if(modelo.length() &gt; 255){</span>
+<span class="fc" id="L22">                    msg = &quot;O campo modelo não pode exceder 255 caracteres.&quot;;</span>
+<span class="fc" id="L23">                    throw new AlertaException(msg);</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">                }else if(modelo.isEmpty()){</span>
+<span class="fc" id="L25">                    msg = &quot;O campo modelo não pode estar vázio.&quot;;</span>
+<span class="fc" id="L26">                    throw new AlertaException(msg);</span>
+                }
+                //Campo Marca
+<span class="fc bfc" id="L29" title="All 2 branches covered.">                if(marca.length() &gt; 255){</span>
+<span class="fc" id="L30">                    msg = &quot;O campo marca não pode exceder 255 caracteres.&quot;;</span>
+<span class="fc" id="L31">                    throw new AlertaException(msg);</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">                }else if(marca.isEmpty()){</span>
+<span class="fc" id="L33">                    msg = &quot;O campo marca não pode estar vázio.&quot;;</span>
+<span class="fc" id="L34">                    throw new AlertaException(msg);</span>
+                }
+                //Campo Capacidade
+<span class="fc bfc" id="L37" title="All 2 branches covered.">                if(!capacidade.matches(&quot;[0-9]*&quot;)){</span>
+<span class="fc" id="L38">                    msg = &quot;O campo capacidade não pode conter letras.&quot;;</span>
+<span class="fc" id="L39">                    throw new AlertaException(msg);</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">                }else if(capacidade.isEmpty()){</span>
+<span class="fc" id="L41">                    msg = &quot;O campo capacidade não pode estar vázio.&quot;;</span>
+<span class="fc" id="L42">                    throw new AlertaException(msg);</span>
+                }
+                //Campo Cache
+<span class="fc bfc" id="L45" title="All 2 branches covered.">                if(!cache.matches(&quot;[0-9]*&quot;)){</span>
+<span class="fc" id="L46">                    msg = &quot;O campo cache não pode conter letras.&quot;;</span>
+<span class="fc" id="L47">                    throw new AlertaException(msg);</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">                }else if(cache.isEmpty()){</span>
+<span class="fc" id="L49">                    msg = &quot;O campo cache não pode estar vázio.&quot;;</span>
+<span class="fc" id="L50">                    throw new AlertaException(msg);</span>
+                }
+                //Campo Taxa de Transferencia
+<span class="fc bfc" id="L53" title="All 2 branches covered.">                if(!taxa.matches(&quot;[0-9]*&quot;)){</span>
+<span class="fc" id="L54">                    msg = &quot;O campo taxa de transferencia não pode conter letras.&quot;;</span>
+<span class="fc" id="L55">                    throw new AlertaException(msg);</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">                }else if(taxa.isEmpty()){</span>
+<span class="fc" id="L57">                    msg = &quot;O campo taxa de transferencia não pode estar vázio.&quot;;</span>
+<span class="fc" id="L58">                    throw new AlertaException(msg);</span>
+                }
+                
+<span class="fc" id="L61">                Armazenamento hd = new Armazenamento();</span>
+<span class="fc" id="L62">                ArmazenamentoDAO hdDAO = new ArmazenamentoDAO(); </span>
+
+<span class="fc" id="L64">                hd.setModelo(modelo);</span>
+<span class="fc" id="L65">                hd.setMarca(marca);</span>
+<span class="fc" id="L66">                hd.setCapacidade(Integer.parseInt(capacidade));</span>
+<span class="fc" id="L67">                hd.setCache(Integer.parseInt(cache));</span>
+<span class="fc" id="L68">                hd.setTaxaTransferencia(Float.parseFloat(taxa));             </span>
+
+
+<span class="fc" id="L71">                hdDAO.insert(hd);</span>
+<span class="fc" id="L72">                return true;</span>
+            
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

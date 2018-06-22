@@ -725,7 +725,9 @@ public class CadastroDePecas extends javax.swing.JFrame {
             try{
                 ProcessadorController pro = new ProcessadorController();
                 pro.inserir(txtMarcaProcessador.getText(),txtModelo.getText(),txtNrNucleo.getText(),txtNrThread.getText(),txtFrequencia.getText(),txtCache.getText(),txtSocket.getText());
+                alertBox("Processador cadastrado com sucesso.");
             }catch(Exception e){
+                alertBox(e.getMessage());
                 System.out.println("Erro: "+ e.getMessage());
             }
     }//GEN-LAST:event_btnSalvarProcessadorActionPerformed
@@ -743,6 +745,7 @@ public class CadastroDePecas extends javax.swing.JFrame {
             FonteController fon = new FonteController();
             fon.inserir(txtModeloFonte.getText(),txtMarcaFonte.getText(),txtPotenciaFonte.getText(),txtCertificadoFonte.getText());
         }catch(Controllers.AlertaException e){
+            alertBox(e.getMessage());
             System.out.println("Erro: "+ e.getMessage());
         }
     }//GEN-LAST:event_btnSalvarFonteActionPerformed
@@ -751,7 +754,9 @@ public class CadastroDePecas extends javax.swing.JFrame {
             try{
                 PlacaMaeController  pcm = new PlacaMaeController();
                 pcm.inserir(txtmodeloPlacamae.getText(),txtMarcaPlacaMae.getText(),txtNrSlotsPlacamae.getText(),txtMemoriaSuportada.getText(),txtConsumoEnergia.getText(),txtSocketPlacaMae.getText(),txtLimiteMemoriaSuportada.getText());
+                alertBox("Placa mae cadastrada com sucesso.");
             }catch(AlertaException e){
+                alertBox(e.getMessage());
                 System.out.println("Erro: "+ e.getMessage());
             }
     }//GEN-LAST:event_btnSalvarPlacaMaeActionPerformed
@@ -759,8 +764,10 @@ public class CadastroDePecas extends javax.swing.JFrame {
     private void btnSalvarArmazenamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarArmazenamentoActionPerformed
             try{
                 ArmazenamentoController arm = new ArmazenamentoController();
-                arm.inserir(txtModeloArmazenamento.getText(),txtMarcaArmazenamento.getText(),txtCapacidadeArmazenamento.getText(),txtCacheArmazenamento.getText(),txtTaxaTransArmazenamento.getText());
+                arm.inserir(txtModeloArmazenamento.getText(),txtMarcaArmazenamento.getText(),txtCapacidadeArmazenamento.getText(),txtCacheArmazenamento.getText(),txtTaxaTransArmazenamento.getText()); 
+                alertBox("Unidade de Armazenamento cadastrada com sucesso.");
             }catch(Controllers.AlertaException e){
+                alertBox(e.getMessage());
                 System.out.println("Erro: "+ e.getMessage());
             }            
     }//GEN-LAST:event_btnSalvarArmazenamentoActionPerformed
@@ -769,7 +776,9 @@ public class CadastroDePecas extends javax.swing.JFrame {
             try{
                 MemoriaController mem = new MemoriaController();
                 mem.inserir(txtModeloMemoria.getText(),txtMarcaMemoria.getText(),txtTipoMemoria.getText(),txtFreqMemoria.getText(),txtTamanhoMemoria.getText());
+                alertBox("Memoria cadastrada com sucesso.");
             }catch(AlertaException e){
+                alertBox(e.getMessage());
                 System.out.println("Erro: "+ e.getMessage());
             }            
     }//GEN-LAST:event_btnSalvarMemoriaActionPerformed
@@ -778,7 +787,9 @@ public class CadastroDePecas extends javax.swing.JFrame {
             try{
                 PlacaExpansaoController ple = new PlacaExpansaoController();
                 ple.inserir(txtNomePE.getText(),txtMarcaPE.getText(),txtNucleoCUDAPE.getText(),txtFrequenciaPE.getText(),txtMemoriaPE.getText(),txtConsumoPE.getText());
+                alertBox("Placa de expansao cadastrada com sucesso.");
             }catch(AlertaException e){
+                alertBox(e.getMessage());
                 System.out.println("Erro: "+ e.getMessage());
             }
             
@@ -850,6 +861,10 @@ public class CadastroDePecas extends javax.swing.JFrame {
         txtNrNucleo.setText("");
         txtNrThread.setText("");        
         txtMarcaProcessador.requestFocus();    
+    }
+    
+    public void alertBox(String msg){
+        JOptionPane.showMessageDialog(null, msg);
     }
     
 

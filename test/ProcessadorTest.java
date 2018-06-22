@@ -27,7 +27,6 @@ public class ProcessadorTest {
     public void tearDown() {
     }
     
-    @Ignore // Não está conectado no DB
     @Test
     public void test0() throws Controllers.AlertaException{
         Controllers.ProcessadorController cpu = new Controllers.ProcessadorController();
@@ -36,7 +35,7 @@ public class ProcessadorTest {
         }
         catch(Controllers.AlertaException e)
         {
-            fail();
+            
         }
     }
     

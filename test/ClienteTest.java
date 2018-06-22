@@ -43,7 +43,7 @@ public class ClienteTest {
     // @Test
     // public void hello() {}
     //---------------------------
-    // Teste para aceitar
+    // Teste para recusar
     @Test
     public void test0()throws Controllers.AlertaException{        
         ClienteController cli = new ClienteController();
@@ -127,6 +127,56 @@ public class ClienteTest {
             fail();
         }catch(Controllers.AlertaException e){
             assertEquals(e.getMessage(),"Formato do campo email incorreto");
+        }
+    }
+    // Teste para recusar
+    @Test
+    public void test8()throws Controllers.AlertaException{        
+        ClienteController cli = new ClienteController();
+        try{
+            assertTrue(cli.inserir("","vs@vs.com","vs@vs.com","123456","123456"));
+        }catch(Controllers.AlertaException e){
+            assertEquals(e.getMessage(),"Campos vázios");
+        }
+    }
+    // Teste para recusar
+    @Test
+    public void test9()throws Controllers.AlertaException{        
+        ClienteController cli = new ClienteController();
+        try{
+            assertTrue(cli.inserir("Carlos Junior","","vs@vs.com","123456","123456"));
+        }catch(Controllers.AlertaException e){
+            assertEquals(e.getMessage(),"Campos vázios");
+        }
+    }
+    // Teste para recusar
+    @Test
+    public void test10()throws Controllers.AlertaException{        
+        ClienteController cli = new ClienteController();
+        try{
+            assertTrue(cli.inserir("Carlos Magno","vs@vs.com","","123456","123456"));
+        }catch(Controllers.AlertaException e){
+            assertEquals(e.getMessage(),"Campos vázios");
+        }
+    }
+    // Teste para recusar
+    @Test
+    public void test11()throws Controllers.AlertaException{        
+        ClienteController cli = new ClienteController();
+        try{
+            assertTrue(cli.inserir("","vs@vs.com","vs@vs.com","","123456"));
+        }catch(Controllers.AlertaException e){
+            assertEquals(e.getMessage(),"Campos vázios");
+        }
+    }
+    // Teste para recusar
+    @Test
+    public void test12()throws Controllers.AlertaException{        
+        ClienteController cli = new ClienteController();
+        try{
+            assertTrue(cli.inserir("Carlos Junior","vs@vs.com","vs@vs.com","123456",""));
+        }catch(Controllers.AlertaException e){
+            assertEquals(e.getMessage(),"Campos vázios");
         }
     }
     

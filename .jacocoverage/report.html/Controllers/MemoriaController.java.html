@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>MemoriaController.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;ProgramaEngSoft&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Controllers</a> &gt; <span class="el_source">MemoriaController.java</span></div><h1>MemoriaController.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Controllers;
+
+import javax.swing.JOptionPane;
+import model.bean.Memoria;
+import model.dao.MemoriaDAO;
+
+/**
+ *
+ * @author gabriel
+ */
+<span class="fc" id="L16">public class MemoriaController {</span>
+    public boolean inserir(String modelo, String marca, String tipo, String frequencia,String tamanho) throws AlertaException {
+        String msg;
+        /*
+        if(modelo.isEmpty()||marca.isEmpty()||tipo.isEmpty()||frequencia.isEmpty()||tamanho.isEmpty()){
+            msg = &quot;Por favor preencha todos os campos.&quot;;
+            alertaBox(msg);
+            throw new AlertaException(msg);
+        }*/
+        //Campo Modelo
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        if(modelo.length() &gt; 255){</span>
+<span class="fc" id="L27">            msg = &quot;O campo modelo não pode exceder 255 caracteres.&quot;;</span>
+<span class="fc" id="L28">            throw new AlertaException(msg);</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        }else if(modelo.isEmpty()){</span>
+<span class="fc" id="L30">            msg = &quot;O campo modelo não pode estar vázio.&quot;;</span>
+<span class="fc" id="L31">            throw new AlertaException(msg);</span>
+        }
+        //Campo Marca
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if(marca.length() &gt; 255){</span>
+<span class="fc" id="L35">            msg = &quot;O campo marca não pode exceder 255 caracteres.&quot;;</span>
+<span class="fc" id="L36">            throw new AlertaException(msg);</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        }else if(marca.isEmpty()){</span>
+<span class="fc" id="L38">            msg = &quot;O campo marca não pode estar vázio.&quot;;</span>
+<span class="fc" id="L39">            throw new AlertaException(msg);</span>
+        }
+        //Campo tipo
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        if(tipo.length() &gt; 255){</span>
+<span class="fc" id="L43">            msg = &quot;O campo tipo não pode exceder 255 caracteres.&quot;;</span>
+<span class="fc" id="L44">            throw new AlertaException(msg);</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        }else if(tipo.isEmpty()){</span>
+<span class="fc" id="L46">            msg = &quot;O campo tipo não pode estar vázio.&quot;;</span>
+<span class="fc" id="L47">            throw new AlertaException(msg);</span>
+        }
+        //Campo Frequencia
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if(!frequencia.matches(&quot;[0-9]*&quot;)){</span>
+<span class="fc" id="L51">            msg = &quot;O campo frequencia não pode conter letras.&quot;;</span>
+<span class="fc" id="L52">            throw new AlertaException(msg);</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        }else if(frequencia.isEmpty()){</span>
+<span class="fc" id="L54">            msg = &quot;O campo frequencia não pode estar vázio.&quot;;</span>
+<span class="fc" id="L55">            throw new AlertaException(msg);</span>
+        }
+        //Campo Tamanho
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        if(!tamanho.matches(&quot;[0-9]*&quot;)){</span>
+<span class="fc" id="L59">            msg = &quot;O campo tamanho não pode conter letras.&quot;;</span>
+<span class="fc" id="L60">            throw new AlertaException(msg);</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        }else if(tamanho.isEmpty()){</span>
+<span class="fc" id="L62">            msg = &quot;O campo tamanho não pode estar vázio.&quot;;</span>
+<span class="fc" id="L63">            throw new AlertaException(msg);</span>
+        }         
+<span class="fc" id="L65">        Memoria ram = new Memoria();</span>
+<span class="fc" id="L66">        MemoriaDAO ramDAO = new MemoriaDAO(); </span>
+
+<span class="fc" id="L68">        ram.setModelo(modelo);</span>
+<span class="fc" id="L69">        ram.setMarca(marca);</span>
+<span class="fc" id="L70">        ram.setTipo(tipo);</span>
+<span class="fc" id="L71">        ram.setFrequenciaMemoria(Float.parseFloat(frequencia));</span>
+<span class="fc" id="L72">        ram.setTamanho(Integer.parseInt(tamanho));</span>
+
+<span class="fc" id="L74">        ramDAO.insert(ram);</span>
+<span class="fc" id="L75">        return true;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

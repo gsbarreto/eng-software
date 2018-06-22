@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Cliente.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;ProgramaEngSoft&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">model.bean</a> &gt; <span class="el_source">Cliente.java</span></div><h1>Cliente.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package model.bean;
+
+/**
+ *
+ * @author Avell G1511 FIRE V3
+ */
+public class Cliente {
+    
+    private int idCli;
+    private String nome;
+    private String email;
+    private String senha;
+    
+<span class="fc" id="L19">    public Cliente(){     </span>
+<span class="fc" id="L20">        this.email = &quot;&quot;;</span>
+<span class="fc" id="L21">        this.nome = &quot;&quot;;</span>
+<span class="fc" id="L22">        this.senha = &quot;&quot;;</span>
+<span class="fc" id="L23">    }</span>
+    
+<span class="fc" id="L25">    public Cliente(String nome, String email, String senha){        </span>
+<span class="fc" id="L26">        this.nome=nome;</span>
+<span class="fc" id="L27">        this.email=email;</span>
+<span class="fc" id="L28">        this.senha=senha;</span>
+<span class="fc" id="L29">    }</span>
+
+    public int getIdCli() {
+<span class="nc" id="L32">        return idCli;</span>
+    }
+
+    public void setIdCli(int idCli) {
+<span class="nc" id="L36">        this.idCli = idCli;</span>
+<span class="nc" id="L37">    }</span>
+
+    public String getNome() {
+<span class="fc" id="L40">        return nome;</span>
+    }
+
+    public void setNome(String nome) {
+<span class="fc" id="L44">        this.nome = nome;</span>
+<span class="fc" id="L45">    }</span>
+
+    public String getEmail() {
+<span class="fc" id="L48">        return email;</span>
+    }
+
+    public void setEmail(String email) {
+<span class="fc" id="L52">        this.email = email;</span>
+<span class="fc" id="L53">    }</span>
+
+    public String getSenha() {
+<span class="fc" id="L56">        return senha;</span>
+    }
+
+    public void setSenha(String senha) {
+<span class="fc" id="L60">        this.senha = senha;</span>
+<span class="fc" id="L61">    }</span>
+    
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

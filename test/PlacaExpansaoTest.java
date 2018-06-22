@@ -27,7 +27,6 @@ public class PlacaExpansaoTest {
     public void tearDown() {
     }
     
-    @Ignore //BD Desconectado
     @Test
     public void test0() throws Controllers.AlertaException{
         Controllers.PlacaExpansaoController gpu = new Controllers.PlacaExpansaoController();

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>PlacaExpansao.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;ProgramaEngSoft&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">model.bean</a> &gt; <span class="el_source">PlacaExpansao.java</span></div><h1>PlacaExpansao.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package model.bean;
+
+/**
+ *
+ * @author Avell G1511 FIRE V3
+ */
+public class PlacaExpansao {
+    
+    private int idPlacaExpansao;
+    private String nome;
+    private String marca;
+    private int nucleosCUDA;
+    private float frequenciaCORE;
+    private int memoria;
+    private int consumo;
+    
+<span class="fc" id="L22">    public PlacaExpansao(){</span>
+        
+<span class="fc" id="L24">    }</span>
+<span class="nc" id="L25">    public PlacaExpansao(String nome, String marca, int nucleosCUDA, float frequenciaCORE, int memoria, int consumo) {</span>
+<span class="nc" id="L26">        this.nome = nome;</span>
+<span class="nc" id="L27">        this.marca = marca;</span>
+<span class="nc" id="L28">        this.nucleosCUDA = nucleosCUDA;</span>
+<span class="nc" id="L29">        this.frequenciaCORE = frequenciaCORE;</span>
+<span class="nc" id="L30">        this.memoria = memoria;</span>
+<span class="nc" id="L31">        this.consumo = consumo;</span>
+<span class="nc" id="L32">    }</span>
+
+    public int getIdPlacaExpansao() {
+<span class="nc" id="L35">        return idPlacaExpansao;</span>
+    }
+
+    public void setIdPlacaExpansao(int idPlacaExpansao) {
+<span class="nc" id="L39">        this.idPlacaExpansao = idPlacaExpansao;</span>
+<span class="nc" id="L40">    }</span>
+
+    public String getNome() {
+<span class="fc" id="L43">        return nome;</span>
+    }
+
+    public void setNome(String nome) {
+<span class="fc" id="L47">        this.nome = nome;</span>
+<span class="fc" id="L48">    }</span>
+
+    public String getMarca() {
+<span class="fc" id="L51">        return marca;</span>
+    }
+
+    public void setMarca(String marca) {
+<span class="fc" id="L55">        this.marca = marca;</span>
+<span class="fc" id="L56">    }</span>
+
+    public int getNucleosCUDA() {
+<span class="fc" id="L59">        return nucleosCUDA;</span>
+    }
+
+    public void setNucleosCUDA(int nucleosCUDA) {
+<span class="fc" id="L63">        this.nucleosCUDA = nucleosCUDA;</span>
+<span class="fc" id="L64">    }</span>
+
+    public float getFrequenciaCORE() {
+<span class="fc" id="L67">        return frequenciaCORE;</span>
+    }
+
+    public void setFrequenciaCORE(float frequenciaCORE) {
+<span class="fc" id="L71">        this.frequenciaCORE = frequenciaCORE;</span>
+<span class="fc" id="L72">    }</span>
+
+    public int getMemoria() {
+<span class="fc" id="L75">        return memoria;</span>
+    }
+
+    public void setMemoria(int memoria) {
+<span class="fc" id="L79">        this.memoria = memoria;</span>
+<span class="fc" id="L80">    }</span>
+
+    public int getConsumo() {
+<span class="fc" id="L83">        return consumo;</span>
+    }
+
+    public void setConsumo(int consumo) {
+<span class="fc" id="L87">        this.consumo = consumo;</span>
+<span class="fc" id="L88">    }</span>
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

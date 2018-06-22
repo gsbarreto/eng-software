@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>FonteController.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;ProgramaEngSoft&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Controllers</a> &gt; <span class="el_source">FonteController.java</span></div><h1>FonteController.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Controllers;
+
+import javax.swing.JOptionPane;
+import model.bean.Fonte;
+import model.dao.FonteDAO;
+
+/**
+ *
+ * @author gabriel
+ */
+<span class="fc" id="L16">public class FonteController {</span>
+    public boolean inserir(String modelo,String marca,String potencia,String certificado) throws AlertaException{
+            String msg;
+            //Campo Modelo
+<span class="fc bfc" id="L20" title="All 2 branches covered.">            if(modelo.length() &gt; 255){</span>
+<span class="fc" id="L21">                msg = &quot;O campo modelo não pode exceder 255 caracteres.&quot;;</span>
+<span class="fc" id="L22">                throw new AlertaException(msg);</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">            }else if(modelo.isEmpty()){</span>
+<span class="fc" id="L24">                msg = &quot;O campo modelo não pode estar vázio.&quot;;</span>
+<span class="fc" id="L25">                throw new AlertaException(msg);</span>
+            }
+            //Campo Marca
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            if(marca.length() &gt; 255){</span>
+<span class="fc" id="L29">                msg = &quot;O campo marca não pode exceder 255 caracteres.&quot;;</span>
+<span class="fc" id="L30">                throw new AlertaException(msg);</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">            }else if(marca.isEmpty()){</span>
+<span class="fc" id="L32">                msg = &quot;O campo marca não pode estar vázio.&quot;;</span>
+<span class="fc" id="L33">                throw new AlertaException(msg);</span>
+            }
+            //Campo Potencia
+<span class="fc bfc" id="L36" title="All 2 branches covered.">            if(!potencia.matches(&quot;[0-9]*&quot;)){</span>
+<span class="fc" id="L37">                msg = &quot;O campo potencia não pode conter letras.&quot;;</span>
+<span class="fc" id="L38">                throw new AlertaException(msg);</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">            }else if(potencia.isEmpty()){</span>
+<span class="fc" id="L40">                msg = &quot;O campo potencia não pode estar vázio.&quot;;</span>
+<span class="fc" id="L41">                throw new AlertaException(msg);</span>
+            }
+            //Campo Certificado
+<span class="fc bfc" id="L44" title="All 2 branches covered.">            if(certificado.length() &gt; 255){</span>
+<span class="fc" id="L45">                msg = &quot;O campo certificado não pode exceder 255 caracteres.&quot;;</span>
+<span class="fc" id="L46">                throw new AlertaException(msg);</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">            }else if(certificado.isEmpty()){</span>
+<span class="fc" id="L48">                msg = &quot;O campo certificado não pode estar vázio.&quot;;</span>
+<span class="fc" id="L49">                throw new AlertaException(msg);</span>
+            }
+            
+<span class="fc" id="L52">            Fonte fonte = new Fonte();</span>
+<span class="fc" id="L53">            FonteDAO fonteDAO = new FonteDAO();            </span>
+<span class="fc" id="L54">            fonte.setModelo(modelo);            </span>
+<span class="fc" id="L55">            fonte.setMarca((marca));            </span>
+<span class="fc" id="L56">            fonte.setPotencia(Integer.parseInt(potencia)); </span>
+<span class="fc" id="L57">            fonte.setCertificado(certificado);            </span>
+<span class="fc" id="L58">            fonteDAO.save(fonte);</span>
+<span class="fc" id="L59">            return true;</span>
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ClienteController.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;ProgramaEngSoft&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Controllers</a> &gt; <span class="el_source">ClienteController.java</span></div><h1>ClienteController.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Controllers;
+
+import javax.swing.JOptionPane;
+import model.bean.Cliente;
+import model.dao.ClienteDAO;
+
+/**
+ *
+ * @author gabriel
+ */
+<span class="fc" id="L16">public class ClienteController {</span>
+    public boolean inserir(String nome,String email,String emailConf,String senha, String senhaConf) throws AlertaException{
+            String msg;
+<span class="fc bfc" id="L19" title="All 10 branches covered.">            if(email.isEmpty()||senha.isEmpty()||nome.isEmpty()||senhaConf.isEmpty()||emailConf.isEmpty()){</span>
+<span class="fc" id="L20">                msg = &quot;Campos vázios&quot;;</span>
+<span class="fc" id="L21">                throw new AlertaException(msg);</span>
+            }
+            
+<span class="fc bfc" id="L24" title="All 2 branches covered.">            if(nome.length() &gt; 50){</span>
+<span class="fc" id="L25">                msg = &quot;O campo nome não pode exceder 50 caracteres.&quot;;</span>
+<span class="fc" id="L26">                throw new AlertaException(msg);</span>
+            }
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            if(email.length() &gt; 50){</span>
+<span class="fc" id="L29">                msg = &quot;O campo email não pode exceder 50 caracteres.&quot;;</span>
+<span class="fc" id="L30">                throw new AlertaException(msg);</span>
+            }
+<span class="fc bfc" id="L32" title="All 2 branches covered.">            if(senha.length() &gt; 50){</span>
+<span class="fc" id="L33">                msg = &quot;O campo senha não pode exceder 50 caracteres.&quot;;</span>
+<span class="fc" id="L34">                throw new AlertaException(msg);</span>
+            }
+            
+            
+            
+<span class="fc" id="L39">            String regex = &quot;[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]+&quot;;</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">            if(email.matches(regex)){            </span>
+                //System.err.println(&quot;cad&quot;);
+<span class="fc bfc" id="L42" title="All 4 branches covered.">                if ((email.equals(emailConf))&amp;&amp;(senha.equals(senhaConf))){</span>
+
+<span class="fc" id="L44">                    Cliente c = new Cliente();</span>
+<span class="fc" id="L45">                    ClienteDAO cli = new ClienteDAO();            </span>
+
+<span class="fc" id="L47">                    c.setNome(nome);</span>
+<span class="fc" id="L48">                    c.setEmail(email);</span>
+<span class="fc" id="L49">                    c.setSenha(senha);         </span>
+
+<span class="fc" id="L51">                    cli.save(c);</span>
+                    
+<span class="fc" id="L53">                    return true;</span>
+                }else{
+<span class="fc" id="L55">                    msg = &quot;Email ou Senha não são iguais&quot;;</span>
+<span class="fc" id="L56">                    throw new AlertaException(msg);</span>
+                }            
+            }else{
+<span class="fc" id="L59">                msg = &quot;Formato do campo email incorreto&quot;;</span>
+<span class="fc" id="L60">                throw new AlertaException(msg);</span>
+            }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

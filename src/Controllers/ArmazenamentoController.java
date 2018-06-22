@@ -20,51 +20,41 @@ public class ArmazenamentoController{
                 //Campo Modelo
                 if(modelo.length() > 255){
                     msg = "O campo modelo não pode exceder 255 caracteres.";
-                    alertBox(msg);
                     throw new AlertaException(msg);
                 }else if(modelo.isEmpty()){
                     msg = "O campo modelo não pode estar vázio.";
-                    alertBox(msg);
                     throw new AlertaException(msg);
                 }
                 //Campo Marca
                 if(marca.length() > 255){
                     msg = "O campo marca não pode exceder 255 caracteres.";
-                    alertBox(msg);
                     throw new AlertaException(msg);
                 }else if(marca.isEmpty()){
                     msg = "O campo marca não pode estar vázio.";
-                    alertBox(msg);
                     throw new AlertaException(msg);
                 }
                 //Campo Capacidade
                 if(!capacidade.matches("[0-9]*")){
                     msg = "O campo capacidade não pode conter letras.";
-                    alertBox(msg);
                     throw new AlertaException(msg);
                 }else if(capacidade.isEmpty()){
                     msg = "O campo capacidade não pode estar vázio.";
-                    alertBox(msg);
                     throw new AlertaException(msg);
                 }
                 //Campo Cache
                 if(!cache.matches("[0-9]*")){
                     msg = "O campo cache não pode conter letras.";
-                    alertBox(msg);
                     throw new AlertaException(msg);
                 }else if(cache.isEmpty()){
                     msg = "O campo cache não pode estar vázio.";
-                    alertBox(msg);
                     throw new AlertaException(msg);
                 }
                 //Campo Taxa de Transferencia
                 if(!taxa.matches("[0-9]*")){
                     msg = "O campo taxa de transferencia não pode conter letras.";
-                    alertBox(msg);
                     throw new AlertaException(msg);
                 }else if(taxa.isEmpty()){
                     msg = "O campo taxa de transferencia não pode estar vázio.";
-                    alertBox(msg);
                     throw new AlertaException(msg);
                 }
                 
@@ -79,12 +69,7 @@ public class ArmazenamentoController{
 
 
                 hdDAO.insert(hd);
-                alertBox("Unidade de Armazenamento cadastrada com sucesso.");
                 return true;
             
-    }
-    
-    public void alertBox(String msg){
-        JOptionPane.showMessageDialog(null, msg);
     }
 }

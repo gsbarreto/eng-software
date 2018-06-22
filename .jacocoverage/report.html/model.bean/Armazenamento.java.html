@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Armazenamento.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;ProgramaEngSoft&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">model.bean</a> &gt; <span class="el_source">Armazenamento.java</span></div><h1>Armazenamento.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package model.bean;
+
+/**
+ *
+ * @author Avell G1511 FIRE V3
+ */
+public class Armazenamento {
+    private int idArmazenamento;
+    private String modelo;
+    private String marca;
+    private int capacidade;
+    private int cache;
+    private float taxaTransferencia;
+    
+<span class="fc" id="L20">    public Armazenamento(){</span>
+        
+<span class="fc" id="L22">    }</span>
+
+<span class="nc" id="L24">    public Armazenamento(String modelo, String marca, int capacidade, int cache, float taxaTransferencia) {</span>
+<span class="nc" id="L25">        this.modelo = modelo;</span>
+<span class="nc" id="L26">        this.marca = marca;</span>
+<span class="nc" id="L27">        this.capacidade = capacidade;</span>
+<span class="nc" id="L28">        this.cache = cache;</span>
+<span class="nc" id="L29">        this.taxaTransferencia = taxaTransferencia;</span>
+<span class="nc" id="L30">    }</span>
+
+    public int getIdArmazenamento() {
+<span class="nc" id="L33">        return idArmazenamento;</span>
+    }
+
+    public void setIdArmazenamento(int idArmazenamento) {
+<span class="nc" id="L37">        this.idArmazenamento = idArmazenamento;</span>
+<span class="nc" id="L38">    }</span>
+
+    public String getModelo() {
+<span class="fc" id="L41">        return modelo;</span>
+    }
+
+    public void setModelo(String modelo) {
+<span class="fc" id="L45">        this.modelo = modelo;</span>
+<span class="fc" id="L46">    }</span>
+
+    public String getMarca() {
+<span class="fc" id="L49">        return marca;</span>
+    }
+
+    public void setMarca(String marca) {
+<span class="fc" id="L53">        this.marca = marca;</span>
+<span class="fc" id="L54">    }</span>
+
+    public int getCapacidade() {
+<span class="fc" id="L57">        return capacidade;</span>
+    }
+
+    public void setCapacidade(int capacidade) {
+<span class="fc" id="L61">        this.capacidade = capacidade;</span>
+<span class="fc" id="L62">    }</span>
+
+    public int getCache() {
+<span class="fc" id="L65">        return cache;</span>
+    }
+
+    public void setCache(int cache) {
+<span class="fc" id="L69">        this.cache = cache;</span>
+<span class="fc" id="L70">    }</span>
+
+    public float getTaxaTransferencia() {
+<span class="fc" id="L73">        return taxaTransferencia;</span>
+    }
+
+    public void setTaxaTransferencia(float taxaTransferencia) {
+<span class="fc" id="L77">        this.taxaTransferencia = taxaTransferencia;</span>
+<span class="fc" id="L78">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

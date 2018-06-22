@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>PlacaMae.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;ProgramaEngSoft&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">model.bean</a> &gt; <span class="el_source">PlacaMae.java</span></div><h1>PlacaMae.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package model.bean;
+
+/**
+ *
+ * @author Avell G1511 FIRE V3
+ */
+public class PlacaMae {
+    private int idPlacaMae;
+    private String modelo;
+    private String marca;
+    private int nrSlot;
+    private String tipoMemoria;
+    private int consumoPlacamae;
+    private String socket;
+    
+<span class="fc" id="L21">    public PlacaMae(){</span>
+        
+<span class="fc" id="L23">    }</span>
+
+<span class="nc" id="L25">    public PlacaMae(String modelo, String marca, int nrSlot, String tipoMemoria, int consumoPlacamae, String socket, int limitacaoMemoriaPlacaMae) {</span>
+<span class="nc" id="L26">        this.modelo = modelo;</span>
+<span class="nc" id="L27">        this.marca = marca;</span>
+<span class="nc" id="L28">        this.nrSlot = nrSlot;</span>
+<span class="nc" id="L29">        this.tipoMemoria = tipoMemoria;</span>
+<span class="nc" id="L30">        this.consumoPlacamae = consumoPlacamae;</span>
+<span class="nc" id="L31">        this.socket = socket;</span>
+<span class="nc" id="L32">        this.limitacaoMemoriaPlacaMae = limitacaoMemoriaPlacaMae;</span>
+<span class="nc" id="L33">    }</span>
+
+    public int getIdPlacaMae() {
+<span class="nc" id="L36">        return idPlacaMae;</span>
+    }
+
+    public void setIdPlacaMae(int idPlacaMae) {
+<span class="nc" id="L40">        this.idPlacaMae = idPlacaMae;</span>
+<span class="nc" id="L41">    }</span>
+
+    public String getModelo() {
+<span class="fc" id="L44">        return modelo;</span>
+    }
+
+    public void setModelo(String modelo) {
+<span class="fc" id="L48">        this.modelo = modelo;</span>
+<span class="fc" id="L49">    }</span>
+
+    public String getMarca() {
+<span class="fc" id="L52">        return marca;</span>
+    }
+
+    public void setMarca(String marca) {
+<span class="fc" id="L56">        this.marca = marca;</span>
+<span class="fc" id="L57">    }</span>
+
+    public int getNrSlot() {
+<span class="fc" id="L60">        return nrSlot;</span>
+    }
+
+    public void setNrSlot(int nrSlot) {
+<span class="fc" id="L64">        this.nrSlot = nrSlot;</span>
+<span class="fc" id="L65">    }</span>
+
+    public String getTipoMemoria() {
+<span class="fc" id="L68">        return tipoMemoria;</span>
+    }
+
+    public void setTipoMemoria(String tipoMemoria) {
+<span class="fc" id="L72">        this.tipoMemoria = tipoMemoria;</span>
+<span class="fc" id="L73">    }</span>
+
+    public int getConsumoPlacamae() {
+<span class="fc" id="L76">        return consumoPlacamae;</span>
+    }
+
+    public void setConsumoPlacamae(int consumoPlacamae) {
+<span class="fc" id="L80">        this.consumoPlacamae = consumoPlacamae;</span>
+<span class="fc" id="L81">    }</span>
+
+    public String getSocket() {
+<span class="fc" id="L84">        return socket;</span>
+    }
+
+    public void setSocket(String socket) {
+<span class="fc" id="L88">        this.socket = socket;</span>
+<span class="fc" id="L89">    }</span>
+
+    public int getLimitacaoMemoriaPlacaMae() {
+<span class="fc" id="L92">        return limitacaoMemoriaPlacaMae;</span>
+    }
+
+    public void setLimitacaoMemoriaPlacaMae(int limitacaoMemoriaPlacaMae) {
+<span class="fc" id="L96">        this.limitacaoMemoriaPlacaMae = limitacaoMemoriaPlacaMae;</span>
+<span class="fc" id="L97">    }</span>
+    private int limitacaoMemoriaPlacaMae;
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

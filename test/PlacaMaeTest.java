@@ -27,7 +27,6 @@ public class PlacaMaeTest {
     public void tearDown() {
     }
     
-    @Ignore
     @Test
     public void test0() throws Controllers.AlertaException {
         Controllers.PlacaMaeController mae = new Controllers.PlacaMaeController();

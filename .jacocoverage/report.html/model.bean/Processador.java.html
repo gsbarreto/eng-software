@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Processador.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;ProgramaEngSoft&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">model.bean</a> &gt; <span class="el_source">Processador.java</span></div><h1>Processador.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package model.bean;
+
+/**
+ *
+ * @author Avell G1511 FIRE V3
+ */
+public class Processador {
+    private int idProcessador;
+    private String marca;
+    private int numNucleos;
+    private String modelo;
+    private int numThread;
+    private float frequenciaProcessador;
+    private int cacheProcessador;
+    private String socketProcessador;
+    
+<span class="fc" id="L22">    public Processador(){        </span>
+<span class="fc" id="L23">    }</span>
+
+<span class="nc" id="L25">    public Processador(String marca, int numNucleos, String modelo, int numThread, float frequenciaProcessador, int cacheProcessador, String socketProcessador) {</span>
+<span class="nc" id="L26">        this.marca = marca;</span>
+<span class="nc" id="L27">        this.numNucleos = numNucleos;</span>
+<span class="nc" id="L28">        this.modelo = modelo;</span>
+<span class="nc" id="L29">        this.numThread = numThread;</span>
+<span class="nc" id="L30">        this.frequenciaProcessador = frequenciaProcessador;</span>
+<span class="nc" id="L31">        this.cacheProcessador = cacheProcessador;</span>
+<span class="nc" id="L32">        this.socketProcessador = socketProcessador;</span>
+<span class="nc" id="L33">    }</span>
+
+    public int getIdProcessador() {
+<span class="nc" id="L36">        return idProcessador;</span>
+    }
+
+    public void setIdProcessador(int idProcessador) {
+<span class="nc" id="L40">        this.idProcessador = idProcessador;</span>
+<span class="nc" id="L41">    }</span>
+
+    public String getMarca() {
+<span class="fc" id="L44">        return marca;</span>
+    }
+
+    public void setMarca(String marca) {
+<span class="fc" id="L48">        this.marca = marca;</span>
+<span class="fc" id="L49">    }</span>
+
+    public int getNumNucleos() {
+<span class="fc" id="L52">        return numNucleos;</span>
+    }
+
+    public void setNumNucleos(int numNucleos) {
+<span class="fc" id="L56">        this.numNucleos = numNucleos;</span>
+<span class="fc" id="L57">    }</span>
+
+    public String getModelo() {
+<span class="fc" id="L60">        return modelo;</span>
+    }
+
+    public void setModelo(String modelo) {
+<span class="fc" id="L64">        this.modelo = modelo;</span>
+<span class="fc" id="L65">    }</span>
+
+    public int getNumThread() {
+<span class="fc" id="L68">        return numThread;</span>
+    }
+
+    public void setNumThread(int numThread) {
+<span class="fc" id="L72">        this.numThread = numThread;</span>
+<span class="fc" id="L73">    }</span>
+
+    public float getFrequenciaProcessador() {
+<span class="fc" id="L76">        return frequenciaProcessador;</span>
+    }
+
+    public void setFrequenciaProcessador(float frequenciaProcessador) {
+<span class="fc" id="L80">        this.frequenciaProcessador = frequenciaProcessador;</span>
+<span class="fc" id="L81">    }</span>
+
+    public int getCacheProcessador() {
+<span class="fc" id="L84">        return cacheProcessador;</span>
+    }
+
+    public void setCacheProcessador(int cacheProcessador) {
+<span class="fc" id="L88">        this.cacheProcessador = cacheProcessador;</span>
+<span class="fc" id="L89">    }</span>
+
+    public String getSocketProcessador() {
+<span class="fc" id="L92">        return socketProcessador;</span>
+    }
+
+    public void setSocketProcessador(String socketProcessador) {
+<span class="fc" id="L96">        this.socketProcessador = socketProcessador;</span>
+<span class="fc" id="L97">    }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

@@ -27,7 +27,6 @@ public class MemoriaTest {
     public void tearDown() {
     }
     
-    @Ignore  // DB desconectado
     @Test
     public void test0() throws Controllers.AlertaException{
         Controllers.MemoriaController mem = new Controllers.MemoriaController();
